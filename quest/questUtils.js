@@ -1,3 +1,5 @@
+import { getUser, setUser } from '../userUtils.js';
+
 export function renderSection(quest) {
     const section = document.createElement('section');
     const div = document.createElement('div');
@@ -31,17 +33,41 @@ export function renderSection(quest) {
 
     button.textContent = 'Submit';
 
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        const choiceId = formData.get('choices');
+        const results = findById(quest.choices, choiceId);
+
+        const user = getUser();
+
+        user.gold += results.gold;
+        user.hp += results.hp;
+        user.completed[quest.id] = true;
+
+        setUser(user);
+
+        const resultDiv = document.querySelector('#result');
+        resultDiv.textContent = results.result;
+
+        const nextButton = document.querySelector('#next');
+
+        nextButton.classList.remove('hidden');
+
+    });
+
     form.append(button);
     section.append(div, img, form);
     return section;
 }
 
 // double check this function works.
-/*
 export function findById(array, id) { 
     return array.find(i => i.id === id); 
 }
-*/
+/*
 export function findById(array, id) {
     for (let i = 0; i < array.length; i++) {
         if (array[i].id === id) {
@@ -50,3 +76,4 @@ export function findById(array, id) {
         return id;
     }
 }
+*/
