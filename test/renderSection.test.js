@@ -1,50 +1,43 @@
 // IMPORT MODULES under test here:
-import { renderSection } from '../quest/questUtils.js';
+import { renderSection } from '../match/questUtils.js';
 
 const test = QUnit.test;
 
-const quest = {
-    id: 'monsters',
-    title: 'A Den of Monsters',
+const barcelona = {
+    id: 'barcelona',
+    title: 'FC Barcelona',
     map: {
         top: '89%',
         left: '44%'
     },
-    image: 'http://www.placekitten.com/300/300/',
+    image: '',
     description: `
-        You enter the quest chamber only to be confronted by a hoard of
-        monsters. And they look hungry. What do you do?
+        You are playing against the might FC Barcelona!
     `,
     choices: [{
-        id: 'negotiate',
-        description: 'Negotiate with them',
+        id: 'defend',
+        description: 'Park the bus!',
         result: `
-            Knowing the monsters are not too bright, you offer to go buy them all
-            turkey dinners from the village pub. They give you 35 gold for meals
-            that will never be delivered. I hope you can live with yourself. 
+            You know your team may not have the talent that Barcelona has so you have decided to play it safe.  No chance to score a goal, but you were able conserve energy, thus +10 for you stamina.
         `,
-        hp: 0,
-        gold: 35
+        stamina: +10,
+        goals: 0,
     }, {
-        id: 'fight',
-        description: 'Fiiiiiggghhhttt!',
+        id: 'attack',
+        description: 'Attack!',
         result: `
-            Brandishing your sword you let out a warrior's cry and charge into the monsters
-            hacking and slashing. Before long you stand panting gazing across the bodies of
-            your vanquished foes. The bad news is you take 30 hp damage. The good news is you
-            find 50 gold.
+            You don't want to wait and see how your opponent will play. You want to attack and score at all costs! But Barca is to good.  You don't score any goals but you do waste a lot of energy. Stamina -40.
         `,
-        hp: -30,
-        gold: 50
+        stamina: -40,
+        goals: 0
     }, {
-        id: 'run',
-        description: 'Run away like good Sir Robin',
+        id: 'possession',
+        description: 'Hold the ball and keep possession',
         result: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
+            You want to keep the ball out of your opponents possession. You hold the ball, not wasting much energy, looking for an opportunity to score, and guess what, you shocked Barca and put one in the back of the net.
         `,
-        hp: -50,
-        gold: 0
+        stamina: -10,
+        goals: 1
     }]
 };
 
@@ -52,24 +45,23 @@ test('time to test a function', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const expected = `<section>
-    <div>
-        A Den of Monsters
-    </div>
-    <img src="http://www.placekitten.com/300/300/">
+    <div>FC Barcelona</div>
+    <img src="">
     <form>
-        <div>You enter the quest chamber only to be confronted by a hoard of
-            monsters. And they look hungry. What do you do?</div>
+        <div>
+                You are playing against the might FC Barcelona!
+            </div>
         <label>
-            <div>Negotiate with them</div>
-            <input type="radio" value="negotiate" name="choices">
+            <div>Park the bus!</div>
+            <input type="radio" value="defend" name="choices">
         </label>
         <label>
-            <div>Fiiiiiggghhhttt!</div>
-            <input type="radio" value="fight" name="choices">
+            <div>Attack!</div>
+            <input type="radio" value="attack" name="choices">
         </label>
         <label>
-            <div>Run away like good Sir Robin</div>
-            <input type="radio" value="run" name="choices">
+            <div>Hold the ball and keep possession</div>
+            <input type="radio" value="possession" name="choices">
         </label>
         <button>Submit</button>
         </form>
@@ -77,7 +69,7 @@ test('time to test a function', (expect) => {
     
     //Act 
     // Call the function you're testing and set the result to a const
-    const el = renderSection(quest);
+    const el = renderSection(barcelona);
 
     //Expect
     // Make assertions about what is expected versus the actual result
