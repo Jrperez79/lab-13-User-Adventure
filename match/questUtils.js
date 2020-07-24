@@ -1,22 +1,22 @@
 import { getUser, setUser } from '../userUtils.js';
 
-export function renderSection(quest) {
+export function renderSection(game) {
     const section = document.createElement('section');
     const div = document.createElement('div');
-    div.textContent = quest.title;
+    div.textContent = game.title;
 
     const img = document.createElement('img');
-    img.src = quest.image;
+    img.src = game.image;
 
     const form = document.createElement('form');
     const description = document.createElement('div');
-    description.textContent = quest.description;
+    description.textContent = game.description;
     form.append(description);
     
-    for (let i = 0; i < quest.choices.length; i++) {
+    for (let i = 0; i < game.choices.length; i++) {
         const label = document.createElement('label');
         const labelDiv = document.createElement('div');
-        const choice = quest.choices[i];
+        const choice = game.choices[i];
 
         labelDiv.textContent = choice.description;
         const input = document.createElement('input');
@@ -39,13 +39,13 @@ export function renderSection(quest) {
         const formData = new FormData(form);
 
         const choiceId = formData.get('choices');
-        const results = findById(quest.choices, choiceId);
+        const results = findById(game.choices, choiceId);
 
         const user = getUser();
 
-        user.gold += results.gold;
-        user.hp += results.hp;
-        user.completed[quest.id] = true;
+        user.goals += results.goals;
+        user.stamina += results.stamina;
+        user.completed[game.id] = true;
 
         setUser(user);
 
@@ -70,10 +70,9 @@ export function findById(array, id) {
 /*
 export function findById(array, id) {
     for (let i = 0; i < array.length; i++) {
-        if (array[i].id === id) {
-            id = array[i];
-        }
-        return id;
+        if (array[i].id === id && Array.isArray(array)) {
+            return id;
     }
+        
 }
 */

@@ -1,42 +1,42 @@
-import quests from '../data.js';
+import games from '../data.js';
 import { getUser } from '../userUtils.js';
 
 const user = getUser();
 
-if (user.hp <= 0) {
+if (user.stamina <= 0) {
     alert('Game Over!');
-    alert('You had this much gold: ' + user.gold);
+    alert(`You have scored ${user.goals} goals.`);
     window.location('../index.html');
 }
 
 const section = document.querySelector('section');
 
-let completedQuests = 0;
+let completedGames = 0;
 
-for (let i = 0; i < quests.length; i++) {
-    const quest = quests[i];
+for (let i = 0; i < games.length; i++) {
+    const game = games[i];
 
-    if (user.completed[quest.id]) {
-        completedQuests++;
+    if (user.completed[game.id]) {
+        completedGames++;
     }
 }
 
-if (completedQuests === quests.length) {
-    alert('You are a winner.  You have this much gold: ' + user.gold);
+if (completedGames === games.length) {
+    alert('You have won the game.  You have this many goals: ' + user.goals);
 }
 
-for (let i = 0; i < quests.length; i++) {
-    const quest = quests[i];
+for (let i = 0; i < games.length; i++) {
+    const game = games[i];
 
-    if (user.completed[quest.id]) {
+    if (user.completed[game.id]) {
         const span = document.createElement('span');
-        span.textContent = quest.title;
+        span.textContent = game.title;
         span.style.textDecoration = 'strikethrough';
         section.append(span);
     } else {
         const a = document.createElement('a');
-        a.textContent = quest.title;
-        a.href = '/quest/?id=' + quest.id;
+        a.textContent = game.title;
+        a.href = '/match/?id=' + game.id;
 
         section.append(a);
     }

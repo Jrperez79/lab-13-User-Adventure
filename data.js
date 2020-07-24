@@ -1,146 +1,124 @@
-
-const monsters = {
-    id: 'monsters',
-    title: 'A Den of Monsters',
+// different options for path to take
+const barcelona = {
+    id: 'barcelona',
+    title: 'FC Barcelona',
     map: {
         top: '89%',
         left: '44%'
     },
-    image: 'monsters.jpg',
+    image: '',
     description: `
-        You enter the quest chamber only to be confronted by a hoard of
-        monsters. And they look hungry. What do you do?
+        You are playing against the might FC Barcelona!
     `,
     choices: [{
-        id: 'negotiate',
-        description: 'Negotiate with them',
+        id: 'defend',
+        description: 'Park the bus!',
         result: `
-            Knowing the monsters are not too bright, you offer to go buy them all
-            turkey dinners from the village pub. They give you 35 gold for meals
-            that will never be delivered. I hope you can live with yourself. 
+            You know your team may not have the talent that Barcelona has so you have decided to play it safe.  No chance to score a goal, but you were able conserve energy, thus +10 for you stamina.
         `,
-        hp: 0,
-        gold: 35
+        stamina: +10,
+        goals: 0,
     }, {
-        id: 'fight',
-        description: 'Fiiiiiggghhhttt!',
+        id: 'attack',
+        description: 'Attack!',
         result: `
-            Brandishing your sword you let out a warrior's cry and charge into the monsters
-            hacking and slashing. Before long you stand panting gazing across the bodies of
-            your vanquished foes. The bad news is you take 30 hp damage. The good news is you
-            find 50 gold.
+            You don't want to wait and see how your opponent will play. You want to attack and score at all costs! But Barca is to good.  You don't score any goals but you do waste a lot of energy. Stamina -40.
         `,
-        hp: -30,
-        gold: 50
+        stamina: -40,
+        goals: 0
     }, {
-        id: 'run',
-        description: 'Run away like good Sir Robin',
+        id: 'possession',
+        description: 'Hold the ball and keep possession',
         result: `
-            As you make a dash for the door a giant spider descends and take a bite of flesh,
-            causing 50 hp damage.
+            You want to keep the ball out of your opponents possession. You hold the ball, not wasting much energy, looking for an opportunity to score, and guess what, you shocked Barca and put one in the back of the net.
         `,
-        hp: -50,
-        gold: 0
+        stamina: -10,
+        goals: 1
     }]
 };
 
-const dragon = {
-    id: 'dragon',
-    title: 'A Problem Dragon',
+// Various dragons you will have to take action with.
+const manchesterUnited = {
+    id: 'manchester',
+    title: 'Manchester United',
     map: {
         top: '57%',
         left: '67%'
     },
-    image: 'dragon.jpg',
-    audio: 'dragon.wav',
-    action: 'dragon-growl.aiff',
+    image: '',
     description: `
-        You travel to a nearby village you have heard is being
-        terrorized by a dragon. Sure enough as you rent a room
-        in a local inn, you go outside and see the dragon about
-        to lay seige! What do you do?
+        You are playing against Manchester United. Home of one of the most famous football clubs in the world!
     `,
     choices: [{
-        id: 'run',
-        description: 'Get the hell out of the village',
+        id: 'defend',
+        description: 'Park the bus!',
         result: `
-            You high tail it in the opposite direction. Luckily,
-            in the panic you find a bag on the ground with 15 gold.
-            Unluckily, you trip over a discarded wagon wheel on your
-            way out of town and take 40 hp damage. 
+            You know your team may not have the talent that the opponent has so you have decided to play it safe.  No chance for goals but you will not concede one!
         `,
-        hp: -35,
-        gold: 35
+        stamina: -35,
+        goals: 1
     }, {
-        id: 'fight',
-        description: 'Fiiiiiggghhhttt!',
+        id: 'attack',
+        description: 'Attack!',
         result: `
-            You attempt to charge towards the dragon, who sees you approach
-            and let's loose a fireball. You wake up the next morning and the
-            village has been completely burned to the ground.
-            Oh, and you take 45 hp damage.
+            You don't want to wait and see how your opponent will play. You want to attack and score at all costs!
         `,
-        hp: -45,
-        gold: 0
+        stamina: -25,
+        goals: 0
     }, {
-        id: 'archer',
-        description: 'Emulate that guy from LOR who shot an arrow',
+        id: 'possession',
+        description: 'Hold the ball and keep possession',
         result: `
-            Inspired by the legend of Bard the Bowman, you notice a
-            stunned archer standing nearby and take their bow and quiver,
-            climb to the top of a tall tower and take aim. On the dragon's
-            next pass you steady your aim and let one fly. Amazingly,
-            you strike the dragon in the eye, piercing into the brain and
-            killing the dragon instantly. The villagers declare you their hero
-            and award you 90 gold.
+            You want to keep the ball out of your opponents possession. You hold the ball, not wasting much energy, looking for an opportunity to score.
         `,
-        hp: 0,
-        gold: 90
+        stamina: -15,
+        goals: 0
     }]
 };
 
-const treasure = {
-    id: 'treasure',
-    title: 'The Golden Treasure',
+// What is inside the quests is below
+const seattleFlounders = {
+    id: 'seattle',
+    title: 'Seattle Flounders',
     map: {
         top: '31%',
         left: '5%'
     },
-    image: 'treasure-chests.png',
-    audio: 'treasure-chests.wav',
-    action: 'chest-opening.wav',
+    image: '',
     description: `
-        As you enter the quest chamber you notice three chests before you.
-        Just as you start to imagine the wealth, you see a giant serpent
-        emerge from the back of the chamber. You'll need to make a run for it,
-        but you have time to open one chest before you take off. Which one 
-        do you choose?
+        You have chosen to play against the worst team in the whole world. Your victory is absolutely no matter how you decide to play against them!  
     `,
     choices: [{
-        id: 'wooden',
-        description: 'A Wooden Chest',
-        result: 'You grab 40 gold pieces!',
-        hp: 0,
-        gold: 40
+        id: 'defend',
+        description: 'Park the bus!',
+        result: `
+            Since Seattle is so bad, they make huge mistakes when you they try to attack. Thus you are able to counter-attack and score 2 goals!
+        `,
+        stamina: 0,
+        goals: 2
     }, {
-        id: 'golden',
-        description: 'A Golden Chest',
-        result: 'Oh no! The chest is booby trapped with poison and you take 50 hp damage',
-        hp: -50,
-        gold: 0
+        id: 'attack',
+        description: 'Attack!',
+        result: `
+            When you decide to set you game strategy to attack against Seattle, they crumble under the pressure.  You scored 3 goals with this attacking strategy!
+        `,
+        stamina: 0,
+        goals: 3
     }, {
-        id: 'jeweled',
-        description: 'A Jeweled Chest',
-        result: 'A warm light engulfs you and you gain 35 hp',
-        hp: 35,
-        gold: 0
+        id: 'possession',
+        description: 'Hold the ball and keep possession',
+        result: `
+           Seattle is so bad, you can just hold possession and wait for them to make mistakes.  Thus you scored a 1 goal!
+        `,
+        stamina: 0,
+        goals: 1
     }]
 };
 
-const quests = [
-    monsters, 
-    treasure,
-    dragon
+const games = [
+    barcelona, 
+    manchesterUnited,
+    seattleFlounders
 ];
 
-export default quests;
+export default games;

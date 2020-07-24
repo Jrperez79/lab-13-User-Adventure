@@ -1,4 +1,4 @@
-import allQuests from '../data.js';
+import games from '../data.js';
 import { findById, renderSection } from './questUtils.js';
 
 
@@ -8,11 +8,11 @@ const main = document.querySelector('main');
 const params = new URLSearchParams(window.location.search);
 const nextButton = document.querySelector('#next');
 
-const questId = params.get('id');
+const gameId = params.get('id');
 
-const questData = findById(allQuests, questId);
+const gameData = findById(games, gameId);
 
-const sectionEl = renderSection(questData);
+const sectionEl = renderSection(gameData);
 
 nextButton.addEventListener('click', () => {
     window.location = '/map'; 

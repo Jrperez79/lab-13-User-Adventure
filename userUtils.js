@@ -2,8 +2,8 @@ export function makeUser(formData) {
     return {
         name: formData.get('name'),
         class: formData.get('class'),
-        hp: 35,
-        gold: 0, 
+        stamina: 50,
+        goals: 0, 
         completed: {}
     };
 }
