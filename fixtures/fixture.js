@@ -4,9 +4,9 @@ import { getUser } from '../userUtils.js';
 const user = getUser();
 
 if (user.stamina <= 0) {
-    alert('Game Over!');
+    alert('Game Over! You lost, better luck next match!');
     alert(`You have scored ${user.goals} goals.`);
-    window.location('../index.html');
+    window.location = '../index.html';
 }
 
 const section = document.querySelector('section');
@@ -22,7 +22,8 @@ for (let i = 0; i < games.length; i++) {
 }
 
 if (completedGames === games.length) {
-    alert('You have won the game.  You have this many goals: ' + user.goals);
+    alert(`You have won the game. You have scored ${user.goals} goals.`);
+    window.location = '../index.html';
 }
 
 for (let i = 0; i < games.length; i++) {

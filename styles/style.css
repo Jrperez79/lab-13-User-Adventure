@@ -7,11 +7,11 @@ body {
     --color4: hsla(187, 41%, 94%, 1);
     --color5: hsla(170, 28%, 95%, 1);
 
-    /* --color1: hsla(45, 86%, 83%, 1);
+    --color1: hsla(45, 86%, 83%, 1);
     --color2: hsla(135, 65%, 98%, 1);
     --color3: hsla(315, 37%, 86%, 1);
     --color4: hsla(45, 73%, 98%, 1);
-    --color5: hsla(224, 40%, 79%, 1); */
+    --color5: hsla(224, 40%, 79%, 1); 
     
     --header-height: 80px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
@@ -19,14 +19,16 @@ body {
     --footer-height: 25px;
     
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--color2);
+    background-color: var(hsla(224, 40%, 79%, 1));
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Ffree-png-buiqe&psig=AOvVaw3IbrLVmCSdd-daXma513xa&ust=1595784848981000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiqyv336OoCFQAAAAAdAAAAABAD');
 }
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: center;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-bottom: calc(var(--footer-height));
 }
 
@@ -47,10 +49,7 @@ section {
 
 header {
     display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    height: var(--header-height);
-    box-shadow: var(--shadow);
+    justify-content: center;
 }
 
 footer {
@@ -61,67 +60,23 @@ footer {
 }
 
 
-h2 {
+h1 {
     font-size: 1.8rem;
     font-weight: bold;
 }
 
-.gutter-right {
-    margin-right: 20px;
-}
-
-.main-logo {
-    animation: pulse 5s infinite ease-in-out;
-}
-
-header img {
-    height: var(--header-height);
-}
-
-
-
-content {
-    width: 80%;
+body {
+    justify-content: center;
 }
 
 p {
     margin: var(--gutter);
 }
-  
-footer {
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    height: var(--footer-height);
-    display: flex;
-    justify-content: flex-end;
-    background-color: var(--color3);
-    box-shadow: var(--shadow);
-}
-  
-  @keyframes pulse {
-    20% {
-      transform: rotate3d(-10, -10, -10, 50deg) scale(1.2);
-    }
 
-    40% {
-        transform: rotate3d(10, 10, -10, 50deg) scale(1);
-    }
-
-    60% {
-        transform: rotate3d(-10, 10, 10, 50deg) scale(1.2);
-      }
-
-    80% {
-        transform: rotate3d(10, 10, 10, 50deg) scale(1);
-    }
-
-  }
-
-  label {
+label {
       display: block;
   }
 
-  .hidden {
+.hidden {
       display: none;
   }
