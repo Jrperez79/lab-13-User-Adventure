@@ -1,5 +1,5 @@
 // IMPORT MODULES under test here:
-import { renderSection } from '../match/questUtils.js';
+import { renderSection } from '../match/matchUtils.js';
 
 const test = QUnit.test;
 
@@ -34,7 +34,7 @@ const barcelona = {
         id: 'possession',
         description: 'Hold the ball and keep possession',
         result: `
-            You want to keep the ball out of your opponents possession. You hold the ball, not wasting much energy, looking for an opportunity to score, and guess what, you shocked Barca and put one in the back of the net.
+            You want to keep the ball out of your opponents possession. You hold the ball, not wasting much energy, looking for an opportunity to score, and guess what, you shocked Barca and put one in the back of the net. -10 stamina and 1 goal scored.
         `,
         stamina: -10,
         goals: 1

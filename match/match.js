@@ -1,5 +1,5 @@
 import games from '../data.js';
-import { findById, renderSection } from './questUtils.js';
+import { findById, renderSection } from './matchUtils.js';
 
 
 const main = document.querySelector('main');
@@ -15,7 +15,7 @@ const gameData = findById(games, gameId);
 const sectionEl = renderSection(gameData);
 
 nextButton.addEventListener('click', () => {
-    window.location = '/map'; 
+    window.location = '/fixtures'; 
 });
 
 main.append(sectionEl);
